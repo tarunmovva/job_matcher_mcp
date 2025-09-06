@@ -1,0 +1,31 @@
+# Cloudflare Workers configuration for MCP Job Matcher Server
+name = "mcp-job-matcher"
+main = "src/worker.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Variables (you can override these in the Cloudflare Dashboard)
+[vars]
+BACKEND_URL = "https://jobboardaggregator-production.up.railway.app"
+BACKEND_ENDPOINT = "/server/match-resume-upload"
+RATE_LIMIT_PER_MINUTE = "10"
+MAX_FILE_SIZE = "15000"
+MIN_FILE_SIZE = "500"
+TIMEOUT = "30000"
+LOG_LEVEL = "info"
+NODE_ENV = "production"
+
+# Secrets (set these using: wrangler secret put <KEY>)
+# REQUIRED: Set your API token with: wrangler secret put API_AUTH_TOKEN
+# Example: wrangler secret put API_AUTH_TOKEN "Bearer your_secure_api_token_here"
+
+# KV namespace for rate limiting (optional - using in-memory for now)
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "your-kv-namespace-id"
+# preview_id = "your-preview-kv-namespace-id"
+
+# Routes (optional - if you want custom domain)
+# routes = [
+#   { pattern = "mcp-jobs.your-domain.com/*", zone_name = "your-domain.com" }
+# ]
