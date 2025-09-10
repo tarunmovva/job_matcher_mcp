@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "job-matcher-local": {
+      "command": "node",
+      "args": ["c:/Users/Tarun/Desktop/jobbot/mcp_server/index.js"],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "job-matcher-remote": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp-job-matcher.jobmatcherstmovva.workers.dev"
+      ]
+    },
+    "job-application-automator": {
+      "command": "D:/Downloads/job_applier/form_extractor_project/.venv/Scripts/python.exe",
+      "args": [
+        "D:/Downloads/job_applier/form_extractor_project/job_application_automator/mcp_server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "D:/Downloads/job_applier/form_extractor_project"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}
